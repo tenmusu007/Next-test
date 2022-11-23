@@ -1,14 +1,16 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { FormStyled } from "../styles/StyleFrom";
-
+import Router from "next/router";
+import { useAuthContext } from "../useContext/useAuthContext";
+interface User {
+  email: string;
+  password: string;
+}
 const Signup = () => {
-	interface User {
-		email: string;
-		password: string;
-	}
+  const context = useContext(useAuthContext)
 	const mailRef = useRef<HTMLInputElement>(null!);
 	const passwordRef = useRef<HTMLInputElement>(null!);
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,20 +20,20 @@ const Signup = () => {
 			password: passwordRef.current.value,
 		};
 		console.log(userInfo);
-		createUserWithEmailAndPassword(
-			auth,
-			userInfo.email,
-			userInfo.password
-		).then((userCredential) => {
-			const user = userCredential.user;
-			console.log(user);
-		});
+		signInWithEmailAndPassword(auth, userInfo.email, userInfo.password).then(
+			async (userCredential) => {
+				const user = userCredential.user;
+        console.log(user);
+        context?.updateIsLogin(true)
+        Router.push("/home");
+			}
+		);
   };
-  return (
+	return (
 		<>
 			<FormStyled>
 				<form onSubmit={(e) => handleSubmit(e)}>
-					<h2>SignUp</h2>
+					<h2>Login</h2>
 					<div>
 						{/* {<p className='errMsg'>This Email dosen't exsit</p>} */}
 						<label htmlFor='email'></label>

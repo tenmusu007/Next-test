@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs  from "fs"
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
@@ -27,7 +27,7 @@ export function getSortedPostsData() {
     }
   })
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
+  return allPostsData.sort((a: any, b:any) => {
     if (a.date < b.date) {
       return 1
     } else {
@@ -47,7 +47,7 @@ export function getAllPostIds() {
   })
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: any) {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
