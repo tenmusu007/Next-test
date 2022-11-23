@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormStyled } from "../styles/StyleFrom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 interface User {
 	email: string;
@@ -14,10 +15,14 @@ const SignUp = () => {
 	const [errMsg, setErrMsg] = useState<boolean>(false);
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,20}$/.test(
-				passwordRef.current.value)
+		console.log(passwordRef.current.value);
+		
+		if (/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,20}$/.test(passwordRef.current.value)
 		) {
-			if (passwordRef !== passwordConfirmRef) return setErrMsg(true);
+			console.log("pass", passwordRef.current.value);
+			console.log("pass2", passwordConfirmRef.current.value);
+			
+			if (passwordRef.current.value !== passwordConfirmRef.current.value) return setErrMsg(true);
 			const userInfo: User = {
 				email: mailRef.current.value,
 				password: passwordRef.current.value,
@@ -32,10 +37,27 @@ const SignUp = () => {
 				console.log(user);
 			});
 		} else {
+			console.log("password is not matched");
+			
 			setErrMsg(true);
 		}
 	};
-
+	useEffect(() => {
+	  const auth = getAuth();
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				// User is signed in, see docs for a list of available properties
+				// https://firebase.google.com/docs/reference/js/firebase.User
+				const uid = user.uid;
+				console.log("now",user);
+				
+				// ...
+			} else {
+				// User is signed out
+				// ...
+			}
+		});
+},[])
 	return (
 		<>
 			<FormStyled>
