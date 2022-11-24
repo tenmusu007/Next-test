@@ -1,10 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { StyledPost } from "../styles/StyledFrom";
 import Router from "next/router";
 import { User } from "../lib/type";
-
 
 const SignUp = () => {
 	const mailRef = useRef<HTMLInputElement>(null!);
@@ -20,16 +19,12 @@ const SignUp = () => {
 				passwordRef.current.value
 			)
 		) {
-			console.log("pass", passwordRef.current.value);
-			console.log("pass2", passwordConfirmRef.current.value);
-
 			if (passwordRef.current.value !== passwordConfirmRef.current.value)
 				return setErrMsg(true);
 			const userInfo: User = {
 				email: mailRef.current.value,
 				password: passwordRef.current.value,
 			};
-			console.log(userInfo);
 			createUserWithEmailAndPassword(
 				auth,
 				userInfo.email,
@@ -55,7 +50,7 @@ const SignUp = () => {
 							id='email'
 							ref={mailRef}
 							placeholder={"email"}
-							autoComplete="new-email"
+							autoComplete='new-email'
 						/>
 					</div>
 					<div>

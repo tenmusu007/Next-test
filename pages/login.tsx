@@ -1,11 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-
 import React, { useContext, useRef ,useState} from "react";
 import { StyledPost } from "../styles/StyledFrom";
 import Router from "next/router";
 import { useAuthContext } from "../useContext/useAuthContext";
-import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { User } from "../lib/type";
 
@@ -23,7 +21,6 @@ const Signup = () => {
 		};
 		signInWithEmailAndPassword(auth, userInfo.email, userInfo.password)
 			.then(async (userCredential) => {
-				// const user = userCredential.user;
 				context?.updateIsLogin(true);
 				Router.push("/");
 			})
