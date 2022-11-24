@@ -6,7 +6,7 @@ export const StyledPost = styled.section`
 	align-items: center;
 	justify-content: center;
 	width: 60%;
-	height: 50vh;
+	height: 90vh;
 	margin: 0 auto;
 	a {
 		color: black;

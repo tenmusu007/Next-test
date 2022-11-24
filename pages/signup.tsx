@@ -37,10 +37,8 @@ const SignUp = () => {
 			).then((userCredential) => {
 				const user = userCredential.user;
 				Router.push("/");
-
 			});
 		} else {
-			console.log("password is not matched")
 			setErrMsg(true);
 		}
 	};
