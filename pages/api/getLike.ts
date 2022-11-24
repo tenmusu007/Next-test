@@ -8,13 +8,12 @@ export default async function handler(
 	res: NextApiResponse<any>
 ) {
 	try {
-		// const { userId, post } = req.body;
-    // console.log(userId, post);
-    const saveLiked = await prisma.likes.create({
-      data:req.body.data
-    })
-    
-		res.status(200).json(saveLiked);
+		const getLike = await prisma.likes.findMany({
+			where: {
+				user_id :req.body.user_id
+			}
+		});
+		res.status(200).json(getLike);
 	} catch (err) {
 		res.status(500).json(err);
 	}
