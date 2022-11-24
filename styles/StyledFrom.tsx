@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const FormStyled = styled.section`
+export const StyledPost = styled.section`
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 60%;
-	height: 100vh;
+	height: 90vh;
 	margin: 0 auto;
 	a {
 		color: black;

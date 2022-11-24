@@ -1,0 +1,1 @@
+Create TABLE posts(id SERIAL PRIMARY KEY, post_id Text, title Text);
