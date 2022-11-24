@@ -1,5 +1,4 @@
 import React, {
-	Children,
 	createContext,
 	ReactNode,
 	useEffect,
@@ -35,10 +34,9 @@ const ContextAuth = ({ children }: children) => {
 			onAuthStateChanged(auth, (user) => {
 				if (user) {
 					setUser(user);
-						return setIsLogin(true);
+					return setIsLogin(true);
 				} else {
 					Router.push("/login");
-					
 				}
 			});
 		};
@@ -48,7 +46,7 @@ const ContextAuth = ({ children }: children) => {
 		<useAuthContext.Provider
 			value={{ isLogin, updateIsLogin, user, updateUser }}
 		>
-			<Header />
+			{isLogin && <Header />}
 			{children}
 		</useAuthContext.Provider>
 	);
