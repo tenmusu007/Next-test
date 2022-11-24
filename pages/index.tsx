@@ -46,7 +46,6 @@ const Home = (props: any) => {
 			id: undefined,
 		};
 		axios.post("/api/postLike", { data: data }).then((res) => {
-			console.log(res.data);
 		});
 	};
 	return (
@@ -68,11 +67,9 @@ const Home = (props: any) => {
 };
 export async function getStaticProps() {
 	const allPostsData = getSortedPostsData();
-	// console.log("post", allPostsData);
 	const postInfo = [];
 	for (const item of allPostsData) {
 		const content = await getPostData(item.id);
-		// console.log("text", content);
 		postInfo.push(content);
 	}
 	

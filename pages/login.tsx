@@ -40,6 +40,7 @@ const Signup = () => {
 							id='email'
 							ref={mailRef}
 							placeholder={"email"}
+							autoComplete="email"
 						/>
 					</div>
 					<div>
@@ -49,6 +50,7 @@ const Signup = () => {
 							ref={passwordRef}
 							placeholder={"password"}
 							id='password'
+							autoComplete="current-password"
 						/>
 					</div>
 					<div className='btnBox'>

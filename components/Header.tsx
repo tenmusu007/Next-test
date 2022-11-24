@@ -52,8 +52,6 @@ type LayoutProps = Required<{
 }>;
 const Header = () => {
 	const context = useContext(useAuthContext);
-	// console.log(context?.user.email);
-
 	const handleLogin = () => {
 		auth.signOut().then(() => {
 			context?.updateIsLogin(false);
@@ -66,7 +64,7 @@ const Header = () => {
 			<HeaderStyled>
 				<div className='headerContainer'>
 					<p className='Link'>
-						<Link href='/home'>home</Link>
+						<Link href='/'>home</Link>
 					</p>
 					<p className='Link'>
 						<Link href='/likelist'>LikeList</Link>

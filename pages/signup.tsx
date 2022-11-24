@@ -57,6 +57,7 @@ const SignUp = () => {
 							id='email'
 							ref={mailRef}
 							placeholder={"email"}
+							autoComplete="new-email"
 						/>
 					</div>
 					<div>
@@ -66,22 +67,22 @@ const SignUp = () => {
 							ref={passwordRef}
 							placeholder={"password"}
 							id='password'
+							autoComplete='new-password'
 						/>
 					</div>
 					<div>
-						<label htmlFor='password'></label>
+						<label htmlFor='passwordConfirm'></label>
 						<input
 							type='password'
 							ref={passwordConfirmRef}
 							placeholder={"password"}
-							id='password'
+							id='passwordConfirm'
+							autoComplete='new-password'
 						/>
 					</div>
 					<div className='btnBox'>
 						{/* <button className='Btn'>Login</button> */}
-						<button className='Btn'>
-							Create Account
-						</button>
+						<button className='Btn'>Create Account</button>
 					</div>
 				</form>
 			</StyledPost>

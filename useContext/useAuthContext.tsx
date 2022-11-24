@@ -35,17 +35,10 @@ const ContextAuth = ({ children }: children) => {
 		const fetchData = async () => {
 			onAuthStateChanged(auth, (user) => {
 				if (user) {
-					// console.log("auth", user.email);
 					setUser(user);
-					// if (user !== undefined) {
-					// 	console.log("login");
 						return setIsLogin(true);
-					// } else {
-					// 	console.log("not login");
-					// 	Router.push("/signup");
-					// }
 				} else {
-					Router.push("/signup");
+					Router.push("/login");
 					
 				}
 			});
