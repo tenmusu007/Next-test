@@ -2,15 +2,15 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 
 import React, { useContext, useRef } from "react";
-import { FormStyled } from "../styles/StyleFrom";
+import { StyledPost } from "../styles/StyledFrom";
 import Router from "next/router";
 import { useAuthContext } from "../useContext/useAuthContext";
-interface User {
-  email: string;
-  password: string;
-}
+import { GetServerSideProps } from "next";
+import Link from "next/link";
+import { User } from "../lib/type";
+
 const Signup = () => {
-  const context = useContext(useAuthContext)
+	const context = useContext(useAuthContext);
 	const mailRef = useRef<HTMLInputElement>(null!);
 	const passwordRef = useRef<HTMLInputElement>(null!);
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,19 +19,17 @@ const Signup = () => {
 			email: mailRef.current.value,
 			password: passwordRef.current.value,
 		};
-		console.log(userInfo);
 		signInWithEmailAndPassword(auth, userInfo.email, userInfo.password).then(
 			async (userCredential) => {
-				const user = userCredential.user;
-        console.log(user);
-        context?.updateIsLogin(true)
-        Router.push("/home");
+				// const user = userCredential.user;
+				context?.updateIsLogin(true);
+				Router.push("/");
 			}
 		);
-  };
+	};
 	return (
 		<>
-			<FormStyled>
+			<StyledPost>
 				<form onSubmit={(e) => handleSubmit(e)}>
 					<h2>Login</h2>
 					<div>
@@ -55,12 +53,25 @@ const Signup = () => {
 					</div>
 					<div className='btnBox'>
 						<button className='Btn'>Login</button>
-						<button className='Btn'>Create Account</button>
+						<Link href='/signup'>
+							<button className='Btn'>Create account</button>
+						</Link>
 					</div>
 				</form>
-			</FormStyled>
+			</StyledPost>
 		</>
 	);
 };
 
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+
+// 	const user =await  pg.query("SELECT * FROM likes")
+// 	console.log("hey",user);
+
+// 	return {
+// 		props: {
+// 			initialContacts: "",
+// 		},
+// 	};
+// };
 export default Signup;
