@@ -5,7 +5,6 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
-import { getCurrentUser } from "../firebase/getUser";
 import Header from "../components/Header";
 import { auth } from "../firebase/firebase";
 import Router from "next/router";

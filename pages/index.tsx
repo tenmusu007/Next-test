@@ -19,24 +19,6 @@ type Like = {
 };
 const Home = (props: any) => {
 	const context = useContext(useAuthContext);
-	// console.log("props", props.postInfo);
-
-	const [likeCount, setLikeCount] = useState<number>(0);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const count: any = {};
-			await axios.get("/api/getLike").then((res) => {
-				// console.log("getlike", res.data);
-				// res.data.forEach((item: Like) => {
-				// 	count['test'] = (count[item.post_id] || 0) + 1;
-				// });
-				// console.log("forEach", count);
-			});
-			// setLikeCount(count);
-		};
-		fetchData();
-	}, []);
 	const handleClikc = (e: Post) => {
 		const data: Like = {
 			user_id: context?.user.uid,
@@ -52,12 +34,14 @@ const Home = (props: any) => {
 		<>
 			<PostStyled>
 				<h2>Home</h2>
-				{props.postInfo.map((item: any, index: string) => {
+				{props.postInfo.map((item: Post, index: string) => {
 					return (
 						<div key={index} className='postContainer'>
 							<h3>{item.title}</h3>
 							<div dangerouslySetInnerHTML={{ __html: item.contentHtml }} />
-							<button onClick={(e) => handleClikc(item)}>Like</button>
+							<button className='btn' onClick={(e) => handleClikc(item)}>
+								Like
+							</button>
 						</div>
 					);
 				})}

@@ -1,9 +1,7 @@
 import { auth } from "../firebase/firebase";
 import { ReactElement, useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import { getCurrentUser } from "../firebase/getUser";
 import Router from "next/router";
-import ContextAuth from "../useContext/useAuthContext";
 import { useAuthContext } from "../useContext/useAuthContext";
 import Link from "next/link";
 const HeaderStyled = styled.header`
