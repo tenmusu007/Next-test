@@ -12,12 +12,12 @@ import type { FirebaseApp } from "firebase/app";
 // const test  = {env}
 
 const firebaseConfig = {
-	apiKey: "AIzaSyB5h-2wdnHQlhosP7buxizMEz3_eV9nJsk",
-	authDomain: "next-test-10e45.firebaseapp.com",
-	projectId: "next-test-10e45",
-	storageBucket: "next-test-10e45.appspot.com",
-	messagingSenderId: "1096114772668",
-	appId: "1:1096114772668:web:cd9b53a478b196457eceb9",
+	// apiKey: "AIzaSyB5h-2wdnHQlhosP7buxizMEz3_eV9nJsk",
+	// authDomain: "next-test-10e45.firebaseapp.com",
+	// projectId: "next-test-10e45",
+	// storageBucket: "next-test-10e45.appspot.com",
+	// messagingSenderId: "1096114772668",
+	// appId: "1:1096114772668:web:cd9b53a478b196457eceb9",
 };
 
 // Initialize Firebase

@@ -15,6 +15,7 @@ interface children {
 interface contextInterface {
 	isLogin: boolean;
 	updateIsLogin: (item: boolean) => void;
+	updateIsLogin: (item: boolean) => void;
 	user: any;
 	updateUser: (item: any) => void;
 }

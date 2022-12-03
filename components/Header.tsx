@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Router from "next/router";
 import { useAuthContext } from "../useContext/useAuthContext";
 import Link from "next/link";
+const Like =styled.p`
+	
+`
 const HeaderStyled = styled.header`
 	.headerContainer {
 		display: felx;
@@ -61,6 +64,7 @@ const Header = () => {
 		<>
 			<HeaderStyled>
 				<div className='headerContainer'>
+					<Like></Like>
 					<p className='Link'>
 						<Link href='/'>home</Link>
 					</p>
